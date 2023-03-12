@@ -38,4 +38,4 @@ Week 4 (27 March 2023)
         
 Week 5 (3 April 2023)
 
-        -  Combine each part work with together
+        - Combine each part work with together
