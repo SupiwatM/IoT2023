@@ -32,12 +32,10 @@ Week 3 (20 March 2023)
         - Coding Communication part part & Processing part
         
 Week 4 (27 March 2023)
-
+Rocky
         - Coding Communication part & Processing part 
                 (All parts have to finish)
         
 Week 5 (3 April 2023)
 
         - Combine each part work with together
-        
-Test Week 6 Hello World
