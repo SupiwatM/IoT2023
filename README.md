@@ -27,6 +27,7 @@ Week 2 (13 March 2023)
                 - Shows the data on dashboards via Netpie and Notification
         - Start Coding Simulation part & Communication part (if possible)
         
+   ![1](https://user-images.githubusercontent.com/127666810/226188362-204695a3-2208-4a83-a9bd-9b9656411a49.jpg)
                 
 Week 3 (20 March 2023)
 
