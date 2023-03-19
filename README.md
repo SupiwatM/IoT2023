@@ -26,6 +26,8 @@ Week 2 (13 March 2023)
                 - Receive the data from Modbus and calculate the value
                 - Shows the data on dashboards via Netpie and Notification
         - Start Coding Simulation part & Communication part (if possible)
+        
+        [![UjLTUN.th.jpeg](https://sv1.img.in.th/UjLTUN.th.jpeg)](https://www.img.in.th/image/UjLTUN)
                 
 Week 3 (20 March 2023)
 
