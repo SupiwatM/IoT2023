@@ -32,6 +32,8 @@ Week 2 (13 March 2023)
 Week 3 (20 March 2023)
 
         - Coding Communication part part & Processing part
+        - Dashboard
+                -Device Schema 
    ![1](https://user-images.githubusercontent.com/127868779/227254514-9dff41da-9e69-4110-8f29-a63f00884fc2.png)
         
 Week 4 (27 March 2023)
