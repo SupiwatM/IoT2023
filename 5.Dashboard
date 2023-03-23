@@ -1,3 +1,37 @@
-Update
-![1](https://user-images.githubusercontent.com/127868779/227254514-9dff41da-9e69-4110-8f29-a63f00884fc2.png)
+Device Schema is associated with the device shadow and NETPIE’s time series database (Feed). It is used for data management purposes. The device schema allows the Server to
 
+-Validate data
+-Transform data (such as changing data units)
+-Archive data in time series database
+
+The device schema is declared in JSON format, Now we've tried configuring and storing it in the database compose of 3 parameter: Power, Voltege and Current.
+
+{
+  "additionalProperties": false,
+  "properties": {
+    "Power": {
+      "operation": {
+        "store": {
+          "ttl": "30d"
+        }
+      },
+      "type": "number"
+    },
+    "Voltage": {
+      "operation": {
+        "store": {
+          "ttl": "30d"
+        }
+      },
+      "type": "number"
+    },
+    "Current": {
+      "operation": {
+        "store": {
+          "ttl": "30d"
+        }
+      },
+      "type": "number"
+    }
+  }
+}
