@@ -1,5 +1,88 @@
-My weekly progress 13-3-2023
-Take with my advisor about the project scope
-Order the necessary things for the project 
-Learn about the needed coding 
-Clearly divided tasks for each individual 
+
+// LINE_TOKEN
+
+void Line_Notify(String message);
+
+#include <ESP8266WiFi.h>
+#include <WiFiClientSecureAxTLS.h> 
+
+// Config connect WiFi
+#define WIFI_SSID "Rocky"
+#define WIFI_PASSWORD "e8d7aa773a2d"
+
+// Line config
+#define LINE_TOKEN "iqCQRJXvDlK85qmA3XsTcYrWd6fR87g6yGvmuzOSA5w"
+
+#define SW D3
+
+String message = "SafWit ทดสอบ"; 
+
+void setup() {
+  pinMode(SW, INPUT);
+
+  Serial.begin(9600);
+
+  // connect to wifi.
+  WiFi.mode(WIFI_STA);
+
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("connecting");
+
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
+
+  Serial.println();
+  Serial.print("connected: ");
+  Serial.println(WiFi.localIP());
+}
+
+void loop() {
+
+  // เว็บที่ไว้แปลงภาษาไทย https://meyerweb.com/eric/tools/dencoder/
+  message = "SafWit"; 
+
+  if (digitalRead(SW) == HIGH) {
+    while (digitalRead(SW) == HIGH) delay(10);
+
+    Serial.println("Enter !");
+    Line_Notify(message);
+  }
+  delay(10);
+}
+
+void Line_Notify(String message) {
+  axTLS::WiFiClientSecure client; 
+
+  if (!client.connect("notify-api.line.me", 443)) {
+    Serial.println("connection failed");
+    return;
+  }
+
+  String req = "";
+  req += "POST /api/notify HTTP/1.1\r\n";
+  req += "Host: notify-api.line.me\r\n";
+  req += "Authorization: Bearer " + String(LINE_TOKEN) + "\r\n";
+  req += "Cache-Control: no-cache\r\n";
+  req += "User-Agent: ESP8266\r\n";
+  req += "Connection: close\r\n";
+  req += "Content-Type: application/x-www-form-urlencoded\r\n";
+  req += "Content-Length: " + String(String("message=" + message).length()) + "\r\n";
+  req += "\r\n";
+  req += "message=" + message;
+  // Serial.println(req);
+  client.print(req);
+
+  delay(20);
+
+  // Serial.println("-------------");
+  while (client.connected()) {
+    String line = client.readStringUntil('\n');
+    if (line == "\r") {
+      break;
+    }
+    //Serial.println(line);
+  }
+  // Serial.println("-------------");
+}
