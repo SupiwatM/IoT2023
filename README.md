@@ -40,7 +40,7 @@ Week 4 (27 March 2023)
 
         - Coding Communication part & Processing part 
                 (All parts have to finish)
-    ![freeboard](https://user-images.githubusercontent.com/127868779/229125325-f8cc7647-64d0-4139-9fe5-a09bb769a1b7.png)
+   ![1](https://user-images.githubusercontent.com/127868779/229125325-f8cc7647-64d0-4139-9fe5-a09bb769a1b7.png)
 
 Week 5 (3 April 2023)
 
