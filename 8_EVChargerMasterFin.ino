@@ -9,8 +9,8 @@
 //---------------------------Code Top--------------------------------
 #include <PubSubClient.h> 
 #include <ESP8266WebServer.h> 
-const char* ssid = "Mos_2.4GHz" ;  
-const char* password = "0853699454" ; 
+const char* ssid = "MOS_2.4G" ;  
+const char* password = "0892563162" ; 
 
 const char* mqtt_server = "broker.netpie.io";
 const int mqtt_port = 1883;
@@ -22,10 +22,11 @@ const char* mqtt_password = "8wiPAqxm_6*v_8NO_W1t_Pqrf_jz-Ldc";
 #include <TridentTD_LineNotify.h>
 //#define SSID        "Mos_2.4GHz"   
 //#define PASSWORD    "0853699454"   
-#define LINE_TOKEN  "fPl3iitvwUzhsokqKXR3zDwle9PIadARm8G4m5hHg4s"   // TOKEN
+#define LINE_TOKEN  "FJpzPzvmcsoxbfJ33j5lxxuSqRYZY2MFWLNyecXNCzc"   // TOKEN
 
-int EV;
+int EV,SW;
 int T=0;
+int T2=0;
 String Input;
 float Tr = 100;
 float Ef = 0;
@@ -103,94 +104,107 @@ if (!client.connected()) {
 //---------------------------Code Top--------------------------------
 
 //-----------------------Recieve the data from EV Charger---------------   
-  while(Serial.available())                     // If serial data is available then enter into while loop
-  {
-    Input = Serial.readStringUntil('*');     // Receive Serial data in Variable 
-    EV = Input.toInt();
-    if(EV == 1)
-    { Serial.print("Charger ");
-      Serial.print(EV);
-      Input = Serial.readStringUntil('*');
-      PR = Input.toInt();
-      Serial.print(" Plug in\n");
-      Serial.print("Power  ");  
-      Serial.print(PR);
-      Serial.print("  W\n");
-      digitalWrite(D0 ,HIGH); 
-      delay(1000);
-      digitalWrite(D0 ,LOW);
-      PW1=PR/1000;
-    } 
-    else if(EV == 2)
-    { Serial.print("Charger ");
-      Serial.print(EV);
-      Input = Serial.readStringUntil('*');
-      PR = Input.toInt();
-      Serial.print(" Plug in\n");
-      Serial.print("Power  ");  
-      Serial.print(PR);
-      Serial.print("  W\n");
-      digitalWrite(D0 ,HIGH); 
-      delay(1000);
-      digitalWrite(D0 ,LOW);
-      PW2=PR/1000;
-    }
-    else if(EV == 3)
-    { Serial.print("Charger ");
-      Serial.print(EV);
-      Input = Serial.readStringUntil('*');
-      PR = Input.toInt();
-      Serial.print(" Plug in\n");
-      Serial.print("Power  ");  
-      Serial.print(PR);
-      Serial.print("  W\n");
-      digitalWrite(D0 ,HIGH); 
-      delay(1000);
-      digitalWrite(D0 ,LOW);
-      PW3=PR/1000;
-    }
-    else if(EV == 4)
-    { Serial.print("Charger ");
-      Serial.print(EV);
-      Input = Serial.readStringUntil('*');
-      PR = Input.toInt();
-      Serial.print(" Plug in\n");
-      Serial.print("Power  ");  
-      Serial.print(PR);
-      Serial.print("  W\n");
-      digitalWrite(D0 ,HIGH); 
-      delay(1000);
-      digitalWrite(D0 ,LOW);
-      PW4=PR/1000;
-    }
-    else if(EV == 5)
-    { Serial.print("Charger ");
-      Serial.print(EV);
-      Input = Serial.readStringUntil('*');
-      PR = Input.toInt();
-      Serial.print(" Plug in\n");
-      Serial.print("Power  ");  
-      Serial.print(PR);
-      Serial.print("  W\n");
-      digitalWrite(D0 ,HIGH); 
-      delay(1000);
-      digitalWrite(D0 ,LOW);
-      PW5=PR/1000;
-    }
-    else if(EV == 6)
-    { Serial.print("Charger ");
-      Serial.print(EV);
-      Input = Serial.readStringUntil('*');
-      PR = Input.toInt();
-      Serial.print(" Plug in\n");
-      Serial.print("Power  ");  
-      Serial.print(PR);
-      Serial.print("  W\n");
-      digitalWrite(D0 ,HIGH); 
-      delay(1000);
-      digitalWrite(D0 ,LOW);
-      PW6=PR/1000;
-    }
+while(Serial.available())                     // If serial data is available then enter into while loop
+  { Input = Serial.readStringUntil('*');     // Receive Serial data in Variable 
+    SW = Input.toInt();
+    Serial.print("Switch ");
+    Serial.print(SW);
+    Serial.print(" Active\n");
+    if(SW == 1 || SW == 2 || SW == 3)
+    {
+      Input = Serial.readStringUntil('*');     // Receive Serial data in Variable 
+      EV = Input.toInt();
+      if(EV == 1)
+      { Serial.print("Charger ");
+        Serial.print(EV);
+        Input = Serial.readStringUntil('*');
+        PR = Input.toInt();
+        Serial.print(" Plug in\n");
+        Serial.print("Power  ");  
+        Serial.print(PR);
+        Serial.print("  W\n");
+        digitalWrite(D0 ,HIGH); 
+        delay(1000);
+        digitalWrite(D0 ,LOW);
+        PW1=PR/1000;
+      } 
+      else if(EV == 2)
+      { Serial.print("Charger ");
+        Serial.print(EV);
+        Input = Serial.readStringUntil('*');
+        PR = Input.toInt();
+        Serial.print(" Plug in\n");
+        Serial.print("Power  ");  
+        Serial.print(PR);
+        Serial.print("  W\n");
+        digitalWrite(D0 ,HIGH); 
+        delay(1000);
+        digitalWrite(D0 ,LOW);
+        PW2=PR/1000;
+      }
+      else if(EV == 3)
+      { Serial.print("Charger ");
+        Serial.print(EV);
+        Input = Serial.readStringUntil('*');
+        PR = Input.toInt();
+        Serial.print(" Plug in\n");
+        Serial.print("Power  ");  
+        Serial.print(PR);
+        Serial.print("  W\n");
+        digitalWrite(D0 ,HIGH); 
+        delay(1000);
+        digitalWrite(D0 ,LOW);
+        PW3=PR/1000;
+      }
+      else if(EV == 4)
+      { Serial.print("Charger ");
+        Serial.print(EV);
+        Input = Serial.readStringUntil('*');
+        PR = Input.toInt();
+        Serial.print(" Plug in\n");
+        Serial.print("Power  ");  
+        Serial.print(PR);
+        Serial.print("  W\n");
+        digitalWrite(D0 ,HIGH); 
+        delay(1000);
+        digitalWrite(D0 ,LOW);
+        PW4=PR/1000;
+      }
+      else if(EV == 5)
+      { Serial.print("Charger ");
+        Serial.print(EV);
+        Input = Serial.readStringUntil('*');
+        PR = Input.toInt();
+        Serial.print(" Plug in\n");
+        Serial.print("Power  ");  
+        Serial.print(PR);
+        Serial.print("  W\n");
+        digitalWrite(D0 ,HIGH); 
+        delay(1000);
+        digitalWrite(D0 ,LOW);
+        PW5=PR/1000;
+      }
+      else if(EV == 6)
+      { Serial.print("Charger ");
+        Serial.print(EV);
+        Input = Serial.readStringUntil('*');
+        PR = Input.toInt();
+        Serial.print(" Plug in\n");
+        Serial.print("Power  ");  
+        Serial.print(PR);
+        Serial.print("  W\n");
+        digitalWrite(D0 ,HIGH); 
+        delay(1000);
+        digitalWrite(D0 ,LOW);
+        PW6=PR/1000;
+      }
+      if(SW == 3)
+      {
+        LINE.setToken(LINE_TOKEN); 
+        LINE.notify("Car "+String(EV)+" Full");
+      }
+    }  
+
   PW1 = PW1/(Efs);
   PW2 = PW2/(Efs);
   PW3 = PW3/(Efs);
@@ -225,12 +239,12 @@ if (!client.connected()) {
     delay(1000);
     digitalWrite(D0 ,LOW);
     LINE.setToken(LINE_TOKEN); 
-    LINE.notify("Adjust charging power to "+String(Efs*100,3)+" %");
+    LINE.notify("🔴 Adjust charging power to "+String(Efs*100,2)+" %");
 
   }
   // ------------------------------Set total Power------------------------
   PWT = PW1+PW2+PW3+PW4+PW5+PW6;
-  Ef = PWT/Tr ;  
+  Ef = PWT/Tr ;
   if(Ef <= (Efb-0.01) && Efs != 1)
   { 
     Efs = 1;
@@ -247,6 +261,8 @@ if (!client.connected()) {
     digitalWrite(D0 ,HIGH); 
     delay(1000);
     digitalWrite(D0 ,LOW);
+    LINE.setToken(LINE_TOKEN); 
+    LINE.notify("🌟 Adjust charging power to "+String(Efs*100,2)+" %");
   }
   // ------------------------------Set total Power------------------------
   PWT = PW1+PW2+PW3+PW4+PW5+PW6;
@@ -278,16 +294,16 @@ if (!client.connected()) {
   delay(10);
   T=T+1;
 //---------------------------Code Top--------------------------------
-  if (T == 1000)
+  if (T == 500)
   {
-    Serial.print(T);
-    Serial.print("\n"); 
-    String data = "{\"data\": {\"Power1\":" + String(PW1) + ",\"Power2\":" + String(PW2) + ",\"Power3\":" + String(PW3) + ",\"Power4\":" + String(PW4) + ",\"Power5\":" + String(PW5) + ",\"Power6\":" + String(PW6) + ",\"PowerT\":" + String(PWT) + "}}";
+    /*Serial.print(T);
+    Serial.print("\n");*/
+    String data = "{\"data\": {\"Power1\":" + String(PW1) + ",\"Power2\":" + String(PW2) + ",\"Power3\":" + String(PW3) + ",\"Power4\":" + String(PW4) + ",\"Power5\":" + String(PW5) + ",\"Power6\":" + String(PW6) + ",\"PowerT\":" + String(PWT) + ",\"Balance\":" + String(Efs*100) + "}}";
     Serial.println(data);
     data.toCharArray(msg, (data.length() + 1));
     client.publish("@shadow/data/update", msg);
-    delay(100);
-    T=0;
+    delay(10);
+    T = 0;
+    T2 = T2+1;
   }
 }
-
