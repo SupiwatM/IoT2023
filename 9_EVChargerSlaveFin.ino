@@ -21,6 +21,7 @@ int LCD = 0;
 int EV = 1;
 float PW = 20;
 float PO = 0;
+int SW;
 int F = 0;
 float Ef = 100;
 
@@ -81,31 +82,52 @@ void loop() {
 
 //--------------------Send the data of Charger Plug in--------------------- 
   if(digitalRead(SWITCH1) == 0)
-  {
+  { SW = 1;
+    delay(50);                            
+    digitalWrite(SLAVE_EN , HIGH); 
+    delay(50);
+    Serial.print(SW);
+    Serial.print("\n");
+    Serial.flush(); 
+    digitalWrite(SLAVE_EN , LOW);
+    digitalWrite(LED4 , HIGH);    // LED ON
+    delay(1000);
+    digitalWrite(LED4 , LOW); 
     Serial.print("EVCharger = ");
     delay(50); 
+
     digitalWrite(SLAVE_EN , HIGH);       
-    delay(100);                           
+    delay(50);                           
     Serial.print(EV);                   
     Serial.flush();                     
-    digitalWrite(SLAVE_EN , LOW); 
+    digitalWrite(SLAVE_EN , LOW);
+    digitalWrite(LED4 , HIGH);    // LED ON
     delay(1000);
+    digitalWrite(LED4 , LOW);     // LED OFF 
     Serial.print("\nPower = ");
-    delay(50);                              
+    delay(50);     
+
     digitalWrite(SLAVE_EN , HIGH);       
     delay(50);                           
     Serial.print(PW*1000);                   
     Serial.flush();                     
     digitalWrite(SLAVE_EN , LOW);      
     Serial.print(" W\n"); 
-
-    digitalWrite( LED1 , HIGH);    // LED ON
-    delay(1000);
-    digitalWrite( LED1 , LOW);     // LED OFF
   } 
 //--------------------Send the data of Charger Plug out--------------------- 
   if(digitalRead(SWITCH2) == 0)
-  {
+  { SW = 2;
+    delay(50);                            
+    digitalWrite(SLAVE_EN , HIGH); 
+    delay(50);
+    Serial.print(SW);
+    Serial.print("\n");
+    Serial.flush(); 
+    digitalWrite(SLAVE_EN , LOW);
+    digitalWrite(LED4 , HIGH);    // LED ON
+    delay(1000);
+    digitalWrite(LED4 , LOW);
+
     Serial.print("EVCharger = ");
     delay(50); 
     digitalWrite(SLAVE_EN , HIGH);       
@@ -113,7 +135,9 @@ void loop() {
     Serial.print(EV);                   
     Serial.flush();                     
     digitalWrite(SLAVE_EN , LOW); 
+    digitalWrite(LED4 , HIGH);    // LED ON
     delay(1000);
+    digitalWrite(LED4 , LOW);     // LED OFF 
     Serial.print("\nPower = ");
     delay(50);                              
     digitalWrite(SLAVE_EN , HIGH);       
@@ -122,21 +146,32 @@ void loop() {
     Serial.flush();                     
     digitalWrite(SLAVE_EN , LOW);      
     Serial.print(" kW Plug Out!\n"); 
-
-    digitalWrite( LED2 , HIGH);    // LED ON
-    delay(1000);
-    digitalWrite( LED2 , LOW);     // LED OFF
   } 
 //--------------------Send the data of Charger Full Charge--------------------- 
   if(digitalRead(SWITCH3) == 0)
-  {
-    delay(50);  
+  { SW = 3;
+    delay(50);                            
+    digitalWrite(SLAVE_EN , HIGH); 
+    delay(50);
+    Serial.print(SW);
+    Serial.print("\n");
+    Serial.flush(); 
+    digitalWrite(SLAVE_EN , LOW);
+    digitalWrite(LED4 , HIGH);    // LED ON
+    delay(1000);
+    digitalWrite(LED4 , LOW);
+
+    Serial.print("EVCharger = ");
+    delay(50);     
     digitalWrite(SLAVE_EN , HIGH);       
     delay(50);                           
-    Serial.print(EV);                   
+    Serial.print(EV);
+    Serial.print("\n");                   
     Serial.flush();                     
     digitalWrite(SLAVE_EN , LOW); 
+    digitalWrite(LED4 , HIGH);    // LED ON
     delay(1000);
+    digitalWrite(LED4 , LOW);     // LED OFF 
     Serial.print("Power = ");
     delay(50);                            
     digitalWrite(SLAVE_EN , HIGH); 
@@ -144,11 +179,8 @@ void loop() {
     Serial.print(PO);
     Serial.flush(); 
     digitalWrite(SLAVE_EN , LOW);
-    Serial.print(" = Full\n"); 
-
-    digitalWrite( LED3 , HIGH);    // LED ON
-    delay(1000);
-    digitalWrite( LED3 , LOW);     // LED OFF
+    Serial.print("\nFull\n"); 
+   
   }
   while(Serial.available())                     // If serial data is available then enter into while loop
   {
