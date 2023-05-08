@@ -45,4 +45,6 @@ Week 4 (27 March 2023)
 Week 5-8 (3 - 28 April 2023)
 
         - Combine each part work with together
-          The system can select an EV charger and command the charger to work. And after that, when there is a load condition over the processing part, it can do load balancing and send a notification message through the line application, finally showing the total energy consumption on the Dashboard.
+          The system can select an EV charger and command the charger to work. And after that, when there is a load 
+     condition over the processing part, it can do load balancing and send a notification message through the line application, 
+     finally showing the total energy consumption on the Dashboard.
