@@ -42,6 +42,7 @@ Week 4 (27 March 2023)
                 (All parts have to finish)
    ![1](https://user-images.githubusercontent.com/127868779/229125325-f8cc7647-64d0-4139-9fe5-a09bb769a1b7.png)
 
-Week 5 (3 April 2023)
+Week 5-8 (3 - 28 April 2023)
 
         - Combine each part work with together
+          The system can select an EV charger and command the charger to work. And after that, when there is a load condition over the processing part, it can do load balancing and send a notification message through the line application, finally showing the total energy consumption on the Dashboard.
