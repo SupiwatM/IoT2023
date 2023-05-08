@@ -48,3 +48,8 @@ Week 5-8 (3 - 28 April 2023)
           The system can select an EV charger and command the charger to work. And after that, when there is a load 
      condition over the processing part, it can do load balancing and send a notification message through the line application, 
      finally showing the total energy consumption on the Dashboard.
+     ![22](https://user-images.githubusercontent.com/127666810/236921716-b9df8502-f23a-4d2b-9176-55fa2c6884d3.jpg)
+     ![23](https://user-images.githubusercontent.com/127666810/236921793-5f2aa052-54b0-4002-ade0-a87edad08157.jpg)
+     ![12](https://user-images.githubusercontent.com/127666810/236921833-ab923d9a-83f8-4d99-b998-9b712669108b.jpg)
+
+
