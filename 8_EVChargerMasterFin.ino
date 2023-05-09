@@ -9,8 +9,8 @@
 //---------------------------Code Top--------------------------------
 #include <PubSubClient.h> 
 #include <ESP8266WebServer.h> 
-const char* ssid = "MOS_2.4G" ;  
-const char* password = "0892563162" ; 
+const char* ssid = "Mos_2.4GHz" ;  
+const char* password = "0853699454" ; 
 
 const char* mqtt_server = "broker.netpie.io";
 const int mqtt_port = 1883;
@@ -201,7 +201,7 @@ while(Serial.available())                     // If serial data is available the
       if(SW == 3)
       {
         LINE.setToken(LINE_TOKEN); 
-        LINE.notify("Car "+String(EV)+" Full");
+        LINE.notify("🔋Car "+String(EV)+" Full");
       }
     }  
 
@@ -239,7 +239,7 @@ while(Serial.available())                     // If serial data is available the
     delay(1000);
     digitalWrite(D0 ,LOW);
     LINE.setToken(LINE_TOKEN); 
-    LINE.notify("🔴 Adjust charging power to "+String(Efs*100,2)+" %");
+    LINE.notify("🔴 Because there are many chargers used together. The efficiency of the charger is reduced to "+String(Efs*100,2)+" %");
 
   }
   // ------------------------------Set total Power------------------------
@@ -262,7 +262,7 @@ while(Serial.available())                     // If serial data is available the
     delay(1000);
     digitalWrite(D0 ,LOW);
     LINE.setToken(LINE_TOKEN); 
-    LINE.notify("🌟 Adjust charging power to "+String(Efs*100,2)+" %");
+    LINE.notify("✅ There are fewer users. Charger performance returns to normal state. ("+String(Efs*100,2)+" %)");
   }
   // ------------------------------Set total Power------------------------
   PWT = PW1+PW2+PW3+PW4+PW5+PW6;
